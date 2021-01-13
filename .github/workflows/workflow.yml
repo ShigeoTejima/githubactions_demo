@@ -1,6 +1,12 @@
 name: Base workflow
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      keyword:
+        description: 'any word'
+        required: false
+        default: 'KEYWORD'
 
 jobs:
   #hello-world:
@@ -27,6 +33,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Echo keyword
+        run: echo "${{ github.event.inputs.keyword }}"
       - name: Checkout code
         uses: actions/checkout@v2
       - name: run hello action
