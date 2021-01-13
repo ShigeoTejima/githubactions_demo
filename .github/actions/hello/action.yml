@@ -1,7 +1,13 @@
 name: 'Hello World'
 description: 'Hello'
+inputs:
+  who-to-greet:
+    description: 'Who to greet'
+    required: false
+    default: 'World'
 runs:
   using: "composite"
   steps:
-    - run: echo Hello World
+    #- run: echo Hello World
+    - run: echo Hello ${{ inputs.who-to-greet }}
       shell: bash
