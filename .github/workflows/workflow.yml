@@ -20,7 +20,8 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      matrix: [10.x]
+      matrix:
+        node-version: [10.x]
 
     steps:
       - name: Use Node.js ${{ matrix.node-version }}
