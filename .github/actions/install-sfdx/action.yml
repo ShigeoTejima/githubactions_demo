@@ -8,3 +8,4 @@ runs:
         cd /tmp
         mkdir -p ~/.local
         npm install sfdx-cli@7.65.4 --global
+      shell: bash
