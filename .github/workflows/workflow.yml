@@ -3,24 +3,24 @@ name: Base workflow
 on: workflow_dispatch
 
 jobs:
-  hello-world:
-    name: Hello World
-    runs-on: ubuntu-latest
+  #hello-world:
+    #name: Hello World
+    #runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    #steps:
+      #- name: Checkout code
+        #uses: actions/checkout@v2
 
-      - name: Echo Hello World
-        run: echo 'Hello World'
-        shell: bash
+      #- name: Echo Hello World
+        #run: echo 'Hello World'
+        #shell: bash
 
-  npm-test0:
-    name: NPM Test0
-    runs-on: ubuntu-latest
-    steps:
-      - run: node --version
-      - run: npm --version
+  #npm-test0:
+    #name: NPM Test0
+    #runs-on: ubuntu-latest
+    #steps:
+      #- run: node --version
+      #- run: npm --version
 
   npm-test:
     name: NPM Test
@@ -37,5 +37,12 @@ jobs:
         with:
           #node-version: ${{ matrix.node-version }}
           node-version: 10.x
-      - run: node --version
-      - run: npm --version
+      - run: |
+          node --version
+          npm --version
+      - name: Install sfdx-cli
+        run: |
+          cd /tmp
+          mkdir -p ~/.local
+          npm install sfdx-cli@7.65.4 --global
+      - run: sfdx --version
