@@ -48,3 +48,5 @@ jobs:
       - name: run install sfdx
         uses: ./.github/actions/install-sfdx
       - run: sfdx --version
+      - name: sfdx help
+        uses: ./.github/actions/sfdx-help

@@ -1,0 +1,8 @@
+name: 'SFDX help'
+description: 'show help sfdx-cli'
+runs:
+  using: "composite"
+  steps:
+    - name: Help sfdx-cli
+      run: sfdx help
+      shell: bash
