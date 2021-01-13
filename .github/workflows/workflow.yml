@@ -15,10 +15,9 @@ jobs:
         run: echo 'Hello World'
         shell: bash
 
-  good-bye:
-    name: Good Bye
+  npm-test:
+    name: NPM Test
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo 'Good Bye'
-        shell: bash
+      - run: npm --version
