@@ -1,0 +1,17 @@
+name: 'Install SFDX'
+description: 'Install sfdx-cli'
+runs:
+  using: "composite"
+  steps:
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+    - run: |
+        node --version
+        npm --version
+    - name: Install sfdx-cli
+      run: |
+        cd /tmp
+        mkdir -p ~/.local
+        npm install sfdx-cli@7.65.4 --global
