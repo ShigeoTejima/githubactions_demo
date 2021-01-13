@@ -14,3 +14,11 @@ jobs:
       - name: Echo Hello World
         run: echo 'Hello World'
         shell: bash
+
+  good-bye:
+    name: Good Bye
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo 'Good Bye'
+        shell: bash
