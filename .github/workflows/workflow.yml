@@ -26,14 +26,16 @@ jobs:
     name: NPM Test
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x]
+    #strategy:
+      #matrix:
+        #node-version: [10.x]
 
     steps:
-      - name: Use Node.js ${{ matrix.node-version }}
+      #- name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          #node-version: ${{ matrix.node-version }}
+          node-version: 10.x
       - run: node --version
       - run: npm --version
