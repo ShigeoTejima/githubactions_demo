@@ -62,3 +62,4 @@ jobs:
         uses: ./.github/actions/test-command
         with:
           name: 'JOHN'
+          file: './.github/data/file.txt'
