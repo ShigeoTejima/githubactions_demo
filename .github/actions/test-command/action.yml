@@ -1,0 +1,16 @@
+name: 'Test command'
+description: 'Test command'
+inputs:
+  name:
+    description: 'name'
+    required: false
+    default: 'John'
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        echo ${{ inputs.name }}
+        lower_name=$(echo ${{ inputs.name }} | tr '[A-Z]' '[a-z]')
+        echo ${lower_name}
+
+      shell: bash

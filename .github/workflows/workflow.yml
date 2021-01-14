@@ -58,3 +58,7 @@ jobs:
       - run: sfdx --version
       - name: sfdx help
         uses: ./.github/actions/sfdx-help
+      - name: test command
+        uses: ./.github/actions/test-command
+        with:
+          name: 'JOHN'
