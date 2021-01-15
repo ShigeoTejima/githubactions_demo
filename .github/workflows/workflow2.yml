@@ -14,8 +14,6 @@ jobs:
   good-bye:
     name: Good Bye
     runs-on: ubuntu-latest
-    env:
-      run1: $(echo ${{ github.event.inputs.run1 }} | tr '[A-Z]' '[a-z]')
 
     steps:
       - name: Checkout code
@@ -26,11 +24,11 @@ jobs:
         shell: bash
 
       - name: Execute Run1
-        if: ${{ github.event.inputs.run1 == 'ON' }}
+        if: ${{ github.event.inputs.run1 == 'ON' || github.event.inputs.run1 == 'on' }}
         run: echo 'Run1 !'
         shell: bash
 
       - name: Execute Run2
-        if: ${{ github.event.inputs.run2 == 'ON' }}
+        if: ${{ github.event.inputs.run2 == 'ON' || github.event.inputs.run2 == 'on' }}
         run: echo 'Run2 !'
         shell: bash
