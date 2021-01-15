@@ -1,0 +1,30 @@
+name: 'Test command'
+description: 'Test command'
+inputs:
+  name:
+    description: 'name'
+    required: false
+    default: 'John'
+  file:
+    description: 'file'
+    required: true
+    default: ''
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        echo ${{ inputs.name }}
+        lower_name=$(echo ${{ inputs.name }} | tr '[A-Z]' '[a-z]')
+        echo ${lower_name}
+
+        IFS=, read -ra columns <<< $(head -1 ${{ inputs.file }})
+        newheader=''
+        for col in "${columns[@]}"; do
+          [[ -n "${newheader}" ]] && newheader="${newheader},"
+          lower_col=$(echo $col | tr '[A-Z]' '[a-z]')
+          echo ${lower_col}
+          newheader="${newheader}${col}"
+        done
+        echo ${newheader}
+
+      shell: bash

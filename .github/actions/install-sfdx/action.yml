@@ -1,0 +1,11 @@
+name: 'Install SFDX'
+description: 'Install sfdx-cli'
+runs:
+  using: "composite"
+  steps:
+    - name: Install sfdx-cli
+      run: |
+        cd /tmp
+        mkdir -p ~/.local
+        npm install sfdx-cli@7.65.4 --global
+      shell: bash

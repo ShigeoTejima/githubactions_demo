@@ -1,0 +1,17 @@
+name: Base2 workflow
+
+on: workflow_dispatch
+
+jobs:
+  good-bye:
+    name: Good Bye
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Echo Good Bye
+        run: echo 'Good Bye'
+        shell: bash
+
