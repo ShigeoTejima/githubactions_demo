@@ -14,13 +14,15 @@ jobs:
   good-bye:
     name: Good Bye
     runs-on: ubuntu-latest
+    env:
+      run1: $(echo ${{ github.event.inputs.run1 }} | tr '[A-Z]' '[a-z]')
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Echo Good Bye
-        run: echo 'Good Bye'
+        run: echo 'Good Bye'; echo ${run1}
         shell: bash
 
       - name: Execute Run1
