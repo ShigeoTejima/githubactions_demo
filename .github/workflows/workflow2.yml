@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       run1:
-        required: false
+        required: true
         default: 'ON'
       run2:
-        required: false
+        required: true
         default: 'ON'
 
 jobs:
