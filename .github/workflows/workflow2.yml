@@ -1,6 +1,14 @@
 name: Base2 workflow
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      run1:
+        required: false
+        default: 'ON'
+      run2:
+        required: false
+        default: 'ON'
 
 jobs:
   good-bye:
@@ -15,3 +23,12 @@ jobs:
         run: echo 'Good Bye'
         shell: bash
 
+      - name: Execute Run1
+        if: ${{ github.event.inputs.run1 == 'ON' }}
+        run: echo 'Run1 !'
+        shell: bash
+
+      - name: Execute Run2
+        if: ${{ github.event.inputs.run2 == 'ON' }}
+        run: echo 'Run2 !'
+        shell: bash
