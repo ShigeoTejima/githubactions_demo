@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Echo run user
         run: |
-          echo github.actor
+          echo ${{ github.actor }}
         shell: bash
 
       - name: Checkout code
