@@ -16,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Echo run user
+        run: |
+          echo github.actor
+        shell: bash
+
       - name: Checkout code
         uses: actions/checkout@v2
 
