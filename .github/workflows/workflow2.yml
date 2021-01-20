@@ -21,6 +21,12 @@ jobs:
           echo ${{ github.actor }}
         shell: bash
 
+      - name: verify actor
+        uses: ./.github/actions/verify-actor
+        with:
+          actor: ${{ github.actor }}
+          allowed-actors: ${{ secrets.ALLOWED_ACTORS }}
+
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -37,3 +43,4 @@ jobs:
         if: ${{ github.event.inputs.run2 == 'ON' || github.event.inputs.run2 == 'on' }}
         run: echo 'Run2 !'
         shell: bash
+

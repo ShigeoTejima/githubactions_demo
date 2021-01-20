@@ -1,0 +1,25 @@
+name: 'Verify actor'
+description: 'Verify actor'
+inputs:
+  actor:
+    description: 'actor'
+    required: true
+  allowed-actors:
+    description: 'allowed actors'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        read -ra allowed_actors <<< $(echo "${{ inputs.allowed-actors }}")
+        for allowed_actor in "${allowed_actors[@]}"; do
+          echo "${allowed_actor}"
+          #if [[ "${{ inputs.actor }}" = "${allowed_actor}" ]]; then
+            #exit 0
+          #fi
+        done
+
+        # actor not match for allowed-actors
+        #exit 1
+
+      shell: bash
