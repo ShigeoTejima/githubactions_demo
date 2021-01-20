@@ -28,7 +28,7 @@ jobs:
         uses: ./.github/actions/verify-actor
         with:
           actor: ${{ github.actor }}
-          allowed-actors: ${{ secrets.ALLOWED_ACTORS }}
+          allowed-actors: "${{ secrets.ALLOWED_ACTORS }}"
 
       - name: Echo Good Bye
         run: echo 'Good Bye'; echo ${run1}
