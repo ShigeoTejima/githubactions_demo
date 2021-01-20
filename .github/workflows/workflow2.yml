@@ -16,6 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Echo run user
         run: |
           echo ${{ github.actor }}
@@ -26,9 +29,6 @@ jobs:
         with:
           actor: ${{ github.actor }}
           allowed-actors: ${{ secrets.ALLOWED_ACTORS }}
-
-      - name: Checkout code
-        uses: actions/checkout@v2
 
       - name: Echo Good Bye
         run: echo 'Good Bye'; echo ${run1}
