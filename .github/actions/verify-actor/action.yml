@@ -11,7 +11,7 @@ runs:
   using: "composite"
   steps:
     - run: |
-        IFS=$'\n' read -ra allowed_actors <<< $(echo "${{ inputs.allowed-actors }}")
+        IFS=" " read -ra allowed_actors <<< $(echo "${{ inputs.allowed-actors }}")
         for allowed_actor in "${allowed_actors[@]}"; do
           echo "${allowed_actor}"
           #if [[ "${{ inputs.actor }}" = "${allowed_actor}" ]]; then
