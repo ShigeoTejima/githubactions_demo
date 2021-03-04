@@ -58,11 +58,11 @@ jobs:
       #- run: sfdx --version
       #- name: sfdx help
         #uses: ./.github/actions/sfdx-help
-      #- name: test command
-        #uses: ./.github/actions/test-command
-        #with:
-          #name: 'JOHN'
-          #file: './.github/data/file.txt'
+      - name: test command
+        uses: ./.github/actions/test-command
+        with:
+          name: 'JOHN'
+          file: './.github/data/file.txt'
       - name: test jq
         run: |
           which jq
