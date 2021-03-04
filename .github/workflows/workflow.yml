@@ -70,4 +70,10 @@ jobs:
         shell: bash
       - name: test envsubst
         run: which envsubst
+      - name: test env
+        run: |
+          echo '{"name": "${name}"}' | name="Foo1" envsubst
+          echo '{"name": "${name}"}' | env name="Foo2" envsubst
+          echo '{"name": "${name}"}' | export name="Foo3" envsubst
+        shell: bash
 
