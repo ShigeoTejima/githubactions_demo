@@ -37,31 +37,34 @@ jobs:
         run: echo "${{ github.event.inputs.keyword }}"
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: run hello action
-        uses: ./.github/actions/hello
-        with:
-          who-to-greet: 'GitHub Actions'
-      - name: Use Node.js 10.x
-        uses: actions/setup-node@v1
-        with:
+      #- name: run hello action
+        #uses: ./.github/actions/hello
+        #with:
+          #who-to-greet: 'GitHub Actions'
+      #- name: Use Node.js 10.x
+        #uses: actions/setup-node@v1
+        #with:
           node-version: 10.x
-      - run: |
-          node --version
-          npm --version
+      #- run: |
+          #node --version
+          #npm --version
       #- name: Install sfdx-cli
         #run: |
           #cd /tmp
           #mkdir -p ~/.local
           #npm install sfdx-cli@7.65.4 --global
-      - name: run install sfdx
-        uses: ./.github/actions/install-sfdx
-      - run: sfdx --version
-      - name: sfdx help
-        uses: ./.github/actions/sfdx-help
-      - name: test command
-        uses: ./.github/actions/test-command
-        with:
-          name: 'JOHN'
-          file: './.github/data/file.txt'
+      #- name: run install sfdx
+        #uses: ./.github/actions/install-sfdx
+      #- run: sfdx --version
+      #- name: sfdx help
+        #uses: ./.github/actions/sfdx-help
+      #- name: test command
+        #uses: ./.github/actions/test-command
+        #with:
+          #name: 'JOHN'
+          #file: './.github/data/file.txt'
       - name: test jq
-        run: which jq
+        run: |
+          which jq
+          jq --version
+
