@@ -63,3 +63,5 @@ jobs:
         with:
           name: 'JOHN'
           file: './.github/data/file.txt'
+      - name: test jq
+        run: which jq
