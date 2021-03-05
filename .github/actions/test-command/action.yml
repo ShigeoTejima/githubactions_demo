@@ -36,4 +36,7 @@ runs:
 
         cat ./.github/data/data.json | jq '.data[] | select (.value != "${{ inputs.name }}").id'
 
+        result=$(cat ./.github/data/data.json)
+        echo ${result} | jq '.data[] | select (.value != "${{ inputs.name }}").id'
+
       shell: bash
