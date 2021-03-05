@@ -39,4 +39,7 @@ runs:
         result=$(cat ./.github/data/data.json)
         echo ${result} | jq '.data[] | select (.value == "${{ inputs.name }}" | not).id'
 
+        ids=$(echo ${result} | jq '.data[] | select (.value != "${{ inputs.name }}").id')
+        echo $ids
+
       shell: bash
