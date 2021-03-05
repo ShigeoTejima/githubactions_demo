@@ -13,6 +13,8 @@ runs:
   using: "composite"
   steps:
     - run: |
+        set -eu
+
         #echo ${{ inputs.name }}
         #lower_name=$(echo ${{ inputs.name }} | tr '[A-Z]' '[a-z]')
         #echo ${lower_name}
