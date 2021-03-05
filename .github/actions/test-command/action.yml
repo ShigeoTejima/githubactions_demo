@@ -34,6 +34,6 @@ runs:
         jsonString=$(env name=${val} envsubst < ./.github/data/foo.json)
         echo $jsonString
 
-        cat ./.github/data/data.json | jq '.data[] | select (.value != "Foo").id'
+        cat ./.github/data/data.json | jq '.data[] | select (.value != "${{ inputs.name }}").id'
 
       shell: bash

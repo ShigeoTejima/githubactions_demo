@@ -61,7 +61,7 @@ jobs:
       - name: test command
         uses: ./.github/actions/test-command
         with:
-          name: 'JOHN'
+          name: 'Foo'
           file: './.github/data/file.txt'
       - name: test jq
         run: |
