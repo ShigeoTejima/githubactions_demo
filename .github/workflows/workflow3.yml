@@ -37,6 +37,10 @@ jobs:
         run: |
           docker-compose ps
 
+      - name: wait-for app started
+        run: |
+          wait-for-it.sh 127.0.0.1:8080 --timeout=30 --strict -- echo 'verified app started.'
+
       - name: curl
         run: |
           sleep 30
