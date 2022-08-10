@@ -39,8 +39,9 @@ jobs:
 
       - name: curl
         run: |
-          #curl -v http://127.0.0.1:8080/actuator/health
-          curl -v http://127.0.0.1:80
+          sleep 30
+          curl -v http://127.0.0.1:8080/actuator/health
+          #curl -v http://127.0.0.1:80
 
       - name: docker-compose down
         run: |
