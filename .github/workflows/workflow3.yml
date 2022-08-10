@@ -10,6 +10,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: build app
+        run: |
+          cd demo
+          ./gradlew build
+
+      - name: build demo docker image
+        run: |
+          cd demo
+          docker build -f Dockerfile -t local/demo .
+          docker images
+
       - name: docker-compose up
         run: |
           docker-compose up -d
@@ -20,7 +37,7 @@ jobs:
 
       - name: curl
         run: |
-          curl -v http://127.0.0.1:8080
+          curl -v http://127.0.0.1:8080/actuator/health
 
       - name: docker-compose down
         run: |
