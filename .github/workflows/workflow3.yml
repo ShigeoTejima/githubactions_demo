@@ -19,6 +19,7 @@ jobs:
       - name: build app
         run: |
           cd demo
+          ls -l
           ./gradlew build
 
       - name: build demo docker image
