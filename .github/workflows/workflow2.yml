@@ -15,3 +15,8 @@ jobs:
         run: echo 'Good Bye'
         shell: bash
 
+      - name: run sh script
+        run: |
+          ./.github/script/demo.sh
+          ./.github/script/demo.sh Foo
+
