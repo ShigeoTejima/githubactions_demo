@@ -6,7 +6,7 @@ else
   echo "1st argument is $1 ."
 fi
 
-function printHello() {
+printHello() {
   echo "Hello"
 }
 
