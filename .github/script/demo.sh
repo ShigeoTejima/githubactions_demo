@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 if [ -z "$1" ]; then
   echo "1st argument does not input."
