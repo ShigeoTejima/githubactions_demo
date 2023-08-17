@@ -5,3 +5,9 @@ if [ -z "$1" ]; then
 else
   echo "1st argument is $1 ."
 fi
+
+function printHello() {
+  echo "Hello"
+}
+
+printHello
