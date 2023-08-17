@@ -1,4 +1,5 @@
-#!/bin/sh pipefail
+#!/bin/sh
+set -e
 
 if [ -z "$1" ]; then
   echo "1st argument does not input."
