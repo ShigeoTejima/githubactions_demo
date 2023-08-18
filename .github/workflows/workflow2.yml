@@ -13,6 +13,7 @@ jobs:
       - name: confirm env
         run: |
           which node
+          node -v
 
       - name: Checkout code
         uses: actions/checkout@v2
