@@ -15,7 +15,7 @@ jobs:
           which node
           node -v
           ip address
-          curl -4 https://ifconfig.co
+          
           curl https://ifconfig.me
 
       - name: Checkout code
