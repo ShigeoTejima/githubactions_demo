@@ -10,6 +10,10 @@ jobs:
       output-test: ${{ steps.define-output.outputs.test }}
 
     steps:
+      - name: confirm env
+        run: |
+          which node
+
       - name: Checkout code
         uses: actions/checkout@v2
 
