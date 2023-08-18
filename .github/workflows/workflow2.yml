@@ -21,6 +21,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: run hello action
+        uses: ./.github/actions/hello
+        with:
+          who-to-greet: 'GitHub Actions'
+
       - name: Echo Good Bye
         run: echo 'Good Bye'
         shell: bash

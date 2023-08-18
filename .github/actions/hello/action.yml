@@ -11,3 +11,10 @@ runs:
     #- run: echo Hello World
     - run: echo Hello ${{ inputs.who-to-greet }}
       shell: bash
+    
+    - name: confirm work directory
+      run: |
+        echo ${{ github.action_path }}
+        ls -lR ${{ github.action_path }}
+        ${{ github.action_path }}/script/hello.sh
+      shell: bash

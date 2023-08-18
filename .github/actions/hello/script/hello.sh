@@ -1,0 +1,1 @@
+echo "HELLO in script file"
