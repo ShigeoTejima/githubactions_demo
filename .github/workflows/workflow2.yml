@@ -14,7 +14,8 @@ jobs:
         run: |
           which node
           node -v
-          ip -4 address
+          ip address
+          curl -4 https://ifconfig.co
 
       - name: Checkout code
         uses: actions/checkout@v2
