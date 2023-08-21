@@ -5,6 +5,9 @@ inputs:
     description: 'Who to greet'
     required: false
     default: 'World'
+outputs:
+  message:
+    value: ${{ steps.define-message.outputs.message }}
 runs:
   using: "composite"
   steps:
@@ -17,4 +20,9 @@ runs:
         echo ${{ github.action_path }}
         ls -lR ${{ github.action_path }}
         ${{ github.action_path }}/script/hello.sh
+      shell: bash
+
+    - name: define message
+      id: define-message
+      run: echo "message=Hello from custom action." >> "$GITHUB_OUTPUT"
       shell: bash

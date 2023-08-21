@@ -22,9 +22,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: run hello action
+        id: hello
         uses: ./.github/actions/hello
         with:
           who-to-greet: 'GitHub Actions'
+
+      - name: echo message from hello
+        run: echo ${{ steps.hello.outputs.message }}
 
       - name: Echo Good Bye
         run: echo 'Good Bye'
