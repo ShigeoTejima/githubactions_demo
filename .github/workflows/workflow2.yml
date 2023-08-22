@@ -21,6 +21,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: confirm workflow info
+        run: |
+          pwd
+          echo ${{ github.workflow_ref }}
+          ls -l .github/workflows
+
       - name: run hello action
         id: hello
         uses: ./.github/actions/hello
