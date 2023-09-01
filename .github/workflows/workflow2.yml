@@ -51,7 +51,7 @@ jobs:
 
       - name: try ngrok
         run: |
-          docker run -d --name ngrok -t -p 4040:4040 -e NGROK_AUTHTOKEN=${{ secrets.ngrok_authtoken }} ngrok/ngrok http host.docker.internal:8080
+          docker run --net=host -d --name ngrok -t -p 4040:4040 -e NGROK_AUTHTOKEN=${{ secrets.ngrok_authtoken }} ngrok/ngrok http 8080
 
           docker ps
  
