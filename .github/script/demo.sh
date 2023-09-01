@@ -13,7 +13,7 @@ printHello() {
 
 printArray() {
   local array_value=$(echo "FOO" "BAR")
-  for value in ${array_value[@]}; do
+  for value in ${array_value}; do
     echo ${value}
   done
 
