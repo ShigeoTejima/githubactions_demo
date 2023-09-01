@@ -12,7 +12,7 @@ printHello() {
 }
 
 printArray() {
-  local array_value=("FOO" "BAR")
+  declare -a array_value=("FOO" "BAR")
 
   for value in ${array_value[@]}; do
     echo ${value}
