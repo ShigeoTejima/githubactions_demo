@@ -11,4 +11,13 @@ printHello() {
   echo "Hello"
 }
 
+printArray() {
+  local array_value=("FOO" "BAR")
+
+  for value in ${array_value[@]}; do
+    echo ${value}
+  done
+
+}
+
 printHello
