@@ -12,10 +12,6 @@ printHello() {
 }
 
 printArray() {
-  local array_value
-  array_value[0]="FOO"
-  array_value[1]="BAR"
-
   for value in $(echo "FOO" "BAR"); do
     echo ${value}
   done
