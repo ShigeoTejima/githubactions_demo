@@ -12,7 +12,9 @@ printHello() {
 }
 
 printArray() {
-  declare -a array_value=("FOO" "BAR")
+  declare -a array_value
+  array_value[0]="FOO"
+  array_value[1]="BAR"
 
   for value in ${array_value[@]}; do
     echo ${value}
