@@ -75,6 +75,13 @@ jobs:
             docker stop ngrok
           fi
 
+      - name: try bash array
+        run: |
+          array_value=("foo" "bar")
+          for value in ${array_value[@]}; do
+            echo ${value}
+          done
+
   confirm-outut:
     name: Confirm previous job's output
     runs-on: ubuntu-latest
