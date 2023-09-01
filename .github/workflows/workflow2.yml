@@ -67,7 +67,7 @@ jobs:
         id: config-ngrok
         run: |
           curl http://localhost:4040/api/tunnels | jq .
-          ngrok_public_url=$(curl http://localhost:4040/api/tunnels | jq -r '.tunnels[] | select(.config.addr == "http://host.docker.internal:8080").public_url')
+          ngrok_public_url=$(curl http://localhost:4040/api/tunnels | jq -r '.tunnels[] | select(.config.addr == "http://localhost:8080").public_url')
           echo "ngrok_public_url: ${ngrok_public_url}"
 
           echo "ngrok_public_url=${ngrok_public_url}" >> "$GITHUB_OUTPUT"
