@@ -64,8 +64,41 @@ jobs:
           interval: 500
       
       - name: get public url of ngrok
+        id: config-ngrok
         run: |
-          curl http://localhost:4040/api/tunnels | jq -r '.tunnels[] | select(.config.addr == "http://host.docker.internal:8080").public_url'
+          ngrok_public_url=$(curl http://localhost:4040/api/tunnels | jq -r '.tunnels[] | select(.config.addr == "http://host.docker.internal:8080").public_url')
+          echo "ngrok_public_url: ${ngrok_public_url}"
+
+          echo "ngrok_public_url=${ngrok_public_url}" >> "$GITHUB_OUTPUT"
+
+      - name: start nginx
+        run: |
+          docker run --name nginx -d -p 8080:80 nginx:alpine-slim
+
+      - name: wait nginx starting
+        uses: cygnetdigital/wait_for_response@v2.0.0
+        with:
+          url: 'http://localhost:8080'
+          responseCode: '200'
+          timeout: 10000
+          interval: 500
+
+      - name: try nginx via ngrok
+        run: |
+          ngrok_public_url=${{ steps.config-ngrok.outputs.ngrok_public_url }}
+          curl -v -X GET "${ngrok_public_url}"
+
+      - name: request http for ngrok
+        run: |
+          curl http://localhost:4040/api/requests/http | jq .
+
+      - name: stop ngrok
+        run: |
+          container_name=$(docker ps -f name=nginx --format json | jq -r '.Names')
+          echo "container_name: ${container_name}"
+          if [[ -n "${container_name}" ]]; then
+            docker stop nginx
+          fi
 
       - name: stop ngrok
         run: |
