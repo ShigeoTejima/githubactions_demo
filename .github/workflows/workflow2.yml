@@ -49,6 +49,15 @@ jobs:
         id: define-output
         run: echo "test=Foo Bar Baz" >> "$GITHUB_OUTPUT"
 
+      - name: try ngrok
+        run: |
+          docker run -d --name ngrok -t -p 4040:4040 -e NGROK_AUTHTOKEN=${{ secrets.ngrok_authtoken }} ngrok/ngrok http host.docker.internal:8080
+
+          curl http://localhost:4040/api/tunnels | jq -r '.tunnels[] | select(.config.addr == "http://host.docker.internal:8080").public_url'
+        
+          docker stop ngrok
+        
+
   confirm-outut:
     name: Confirm previous job's output
     runs-on: ubuntu-latest
