@@ -16,10 +16,11 @@ printArray() {
   array_value[0]="FOO"
   array_value[1]="BAR"
 
-  for value in ${array_value[@]}; do
+  for value in $(echo "FOO" "BAR"); do
     echo ${value}
   done
 
 }
 
 printHello
+printArray
