@@ -54,11 +54,26 @@ jobs:
           docker run -d --name ngrok -t -p 4040:4040 -e NGROK_AUTHTOKEN=${{ secrets.ngrok_authtoken }} ngrok/ngrok http host.docker.internal:8080
 
           docker ps
-
+ 
+      - name: wait ngrok starting
+        uses: cygnetdigital/wait_for_response@v2.0.0
+        with:
+          url: 'http://localhost:4040/api/'
+          responseCode: '200'
+          timeout: 10000
+          interval: 500
+      
+      - name: get public url of ngrok
+        run: |
           curl http://localhost:4040/api/tunnels | jq -r '.tunnels[] | select(.config.addr == "http://host.docker.internal:8080").public_url'
-        
-          docker stop ngrok
-        
+
+      - name: stop ngrok
+        run: |
+          container_name=$(docker ps -f name=ngrok --format json | jq -r '.Names')
+          echo "container_name: ${container_name}"
+          if [[ -n "${container_name}" ]]; then
+            docker stop ngrok
+          fi
 
   confirm-outut:
     name: Confirm previous job's output
