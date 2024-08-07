@@ -50,7 +50,8 @@ jobs:
           #curl -v http://127.0.0.1:80
 
       - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3          
+        uses: mxschmitt/action-tmate@v3
+        timeout-minutes: 10
 
       - name: docker-compose down
         run: |
